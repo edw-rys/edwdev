@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
     /**
+     * Data this project
+     */
+    private $data ;
+    /**
      * Views
      */
     private $views ;
@@ -24,9 +28,19 @@ class FrontController extends Controller
          * Views
          */
         $this->views = (object) [
-            'front' => 'front.index'
+            'front' => 'front.pages.front.index'
         ];
 
+        /**
+         * Data front
+         */
+        $this->data = (object) [
+            'socialMedia'   => config('app_project.social-media'),
+            'habilities'    => config('app_project.habilities'),
+            'about'         => config('app_project.about'),
+            'name'          => config('app_project.name'),
+        ];
+         
         // $this->routes = [];
     }
     /**
@@ -34,6 +48,9 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view($this->views->front);
+        // notify()->success('Laravel Notify is awesome!');
+        return view($this->views->front)
+            ->with('data', $this->data)
+            ;
     }
 }
