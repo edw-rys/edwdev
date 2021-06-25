@@ -24,6 +24,7 @@ $(function () {
                 success: function (data)
                 {
                     $('#submit').text('Enviar Mensaje').attr('disabled', 'false');
+                    $('#submit').removeAttr('disabled', 'false');
                     // data = JSON object that contact.php returns
 
                     // we recieve the type of the message: success x danger and apply it to the 
@@ -44,6 +45,7 @@ $(function () {
                 },
                 error: function (params) {
                     $('#submit').text('Enviar Mensaje').attr('disabled', 'false');
+                    $('#submit').removeAttr('disabled', 'false');
                 }
             });
             return false;
