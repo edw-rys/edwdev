@@ -73,8 +73,8 @@
 		</div>
 		<!-- logo image -->
 		<div class="site-logo">
-			<a href="index.html">
-				<img src="images/logo.svg" alt="Bolby" />
+			<a href="/">
+				<img src="{{ img_me() }}" alt="Edw" />
 			</a>
 		</div>
 	</div>

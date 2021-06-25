@@ -3,8 +3,8 @@
 	
 	<!-- logo image -->
 	<div class="site-logo">
-		<a href="index.html">
-			<img src="images/logo.svg" alt="Bolby" />
+		<a href="/">
+			<img src="{{ img_me('gadas.svg') }}" alt="Edw" style="width: 5.5em" />
 		</a>
 	</div>
 	
@@ -12,19 +12,19 @@
 	<nav>
 		<ul class="vertical-menu scrollspy">
 			<li class="active"><a href="#home"><i class="icon-home"></i>Home</a></li>
-			<li><a href="#about"><i class="icon-user-following"></i>About</a></li>
-			<li><a href="#services"><i class="icon-briefcase"></i>Services</a></li>
-			<li><a href="#experience"><i class="icon-graduation"></i>Experience</a></li>
-			<li><a href="#works"><i class="icon-layers"></i>Works</a></li>
-			<li><a href="#blog"><i class="icon-note"></i>Blog</a></li>
-			<li><a href="#contact"><i class="icon-bubbles"></i>Contact</a></li>
+			<li><a href="#about"><i class="icon-user-following"></i>Acerca de mi</a></li>
+			<li><a href="#services"><i class="icon-briefcase"></i>Servicios</a></li>
+			<li><a href="#experience"><i class="icon-graduation"></i>Experiencia</a></li>
+			<li><a href="#works"><i class="icon-layers"></i>Trabajos</a></li>
+			{{-- <li><a href="#blog"><i class="icon-note"></i>Blog</a></li> --}}
+			<li><a href="#contact"><i class="icon-bubbles"></i>Contacto</a></li>
 		</ul>
 	</nav>
 	
 	<!-- site footer -->
 	<div class="footer">
 		<!-- copyright text -->
-		<span class="copyright">© 2020 Bolby Template.</span>
+		<span class="copyright">© 2021 e-dev.</span>
 	</div>
 
 </header>

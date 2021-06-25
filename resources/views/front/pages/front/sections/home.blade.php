@@ -4,7 +4,7 @@
         <!-- intro -->
         <div class="intro">
             <!-- avatar image -->
-            <img src="{{ img_me() }}" alt="Bolby" class="mb-4" style="border-radius: 50%;height: 150px;"/>
+            <img src="{{ img_me() }}" alt="Edw" class="mb-4" style="border-radius: 50%;height: 150px;"/>
 
             <!-- info -->
             <h1 class="mb-2 mt-0">{{ $name }}</h1>

@@ -24,11 +24,7 @@ class Services extends Model
     protected $appends = ['image_url'];
     public function getImageUrlAttribute()
     {
-        $imgDir = ($this->image) ;
-        if(Storage::exists($imgDir)){
-            return asset($imgDir);
-        }
-        return $imgDir;
+        return asset('front/images/services/'.$this->image);
         // return asset('avatar/default-profile-3.png');
     }
 }

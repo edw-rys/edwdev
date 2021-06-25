@@ -19,12 +19,12 @@ class CreteTypeExperience extends Migration
             $table->string('icon')->nullable();
             $table->string('description')->nullable();
 
-            $table->timestamps();
             $table->string('status')->default('active');
             $table->dateTime('deleted_at')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->timestamps();
             // Relationship
             $table->foreign('created_by')
                 ->references('id')

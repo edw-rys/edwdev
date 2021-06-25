@@ -7,6 +7,6 @@ if (! function_exists('img_me')) {
      */
     function img_me($img = 'me.jpg')
     {
-        return asset('front/images/me/me.jpg');
+        return asset('front/images/me/'.$img);
     }
 }

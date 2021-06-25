@@ -18,6 +18,7 @@ class CreateWork extends Migration
             $table->string('name');
             $table->string('image',200)->nullable();
             $table->string('description')->nullable();
+            $table->string('external_link')->nullable();
             $table->unsignedBigInteger('type_id');
 
             $table->timestamps();

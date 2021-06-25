@@ -15,17 +15,18 @@ class CreateServices extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name',250);
             $table->string('image')->nullable();
+            $table->string('color',50)->nullable();
             $table->string('description')->nullable();
             $table->integer('numbers')->default(0);
 
-            $table->timestamps();
-            $table->string('status')->default('active');
+            $table->string('status',25)->default('active');
             $table->dateTime('deleted_at')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->timestamps();
             // Relationship
             $table->foreign('created_by')
                 ->references('id')
