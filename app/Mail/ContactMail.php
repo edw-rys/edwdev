@@ -16,9 +16,8 @@ class ContactMail extends Mailable
      *
      * @return void
      */
-    public function __construct($message , $subject, $name, $email, $identification)
+    public function __construct($message , $subject, $name, $email)
     {
-        $this->identification = $identification;
         $this->name = $name;
         $this->email = $email;
         $this->subject = $subject;
@@ -34,7 +33,7 @@ class ContactMail extends Mailable
     {
         return $this->markdown('emails.contact')
             ->subject($this->subject)
-            ->with('identification', $this->identification)
+            ->with('identification', '')
             ->with('name', $this->name)
             ->with('email', $this->email)
             ->with('message', $this->message)
