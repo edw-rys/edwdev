@@ -1,6 +1,10 @@
 <?php
 return [
     'title' => 'Edw Dev',
+    'description'   => 'Edw Dev, Desarrollo de aplicativos web, Técnología',
+    'emails'    => [
+        'send' => 'edw-toni@hotmail.com'
+    ],
     /**
      * Social media
      */

@@ -14,7 +14,7 @@ $(function () {
 
         // if the validator does not prevent form submit
         if (!e.isDefaultPrevented()) {
-            var url = "form/contact.php";
+            var url = document.getElementById('contact-form').getAttribute('action');
 
             // POST values in the background the the script URL
             $.ajax({
@@ -38,6 +38,7 @@ $(function () {
                         $('#contact-form').find('.messages').html(alertBox);
                         // empty the form
                         $('#contact-form')[0].reset();
+                        $('#token-form-contact').val(data.token);
                     }
                 }
             });

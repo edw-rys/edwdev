@@ -3,9 +3,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>{{ config('app_project.title')}}</title>
-	<meta name="description" content="{{ config('app_project.title') }}">
+	<meta name="description" content="{{ config('app_project.description') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="https://via.placeholder.com/32x32">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/me/gafas.jpg')}}">
 
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" href="{{ asset_front('css/bootstrap.min.css') }}" type="text/css" media="all">
