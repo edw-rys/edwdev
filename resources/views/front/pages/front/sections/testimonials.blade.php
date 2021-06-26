@@ -18,7 +18,7 @@
                 <h4 class="mt-3 mb-0">SmartFrame Dev</h4>
                 <span class="subtitle">Empresa Desarrolladora de Software y servicio técnico</span>
                 <div class="bg-white padding-30 shadow-dark rounded triangle-top position-relative mt-4">
-                    <p class="mb-0">Alianza con la SmartFrame Dev en el desarrollo de software y diseño de sitios web 👍</p>
+                    <p class="mb-0">Alianza con SmartFrame Dev en el desarrollo de software y diseño de sitios web 👍</p>
                 </div>
             </div>
 
