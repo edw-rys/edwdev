@@ -29,6 +29,11 @@ return [
             'url'   => 'https://twitter.com/edw_rys',
             'icon'  => 'fab fa-twitter'
         ],
+        (object) [
+            'name'  => 'Github',
+            'url'   => 'https://github.com/edw-rys',
+            'icon'  => 'fab fa-github'
+        ],
         /*(object) [
             'name'  => 'Pinterest',
             'url'   => 'https://www.pinterest.com/edw.rysv/',
