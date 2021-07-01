@@ -21,19 +21,19 @@ return [
         ],
         (object) [
             'name'  => 'Linkedin',
-            'url'   => 'https://ec.linkedin.com/',
+            'url'   => 'https://www.linkedin.com/in/edward-reyes-0733921a7/',
             'icon'  => 'fab fa-linkedin-in'
         ],
         (object) [
             'name'  => 'Twitter',
-            'url'   => 'https://www.twitter.com/edw.rysv/',
+            'url'   => 'https://twitter.com/edw_rys',
             'icon'  => 'fab fa-twitter'
         ],
-        (object) [
+        /*(object) [
             'name'  => 'Pinterest',
             'url'   => 'https://www.pinterest.com/edw.rysv/',
             'icon'  => 'fab fa-pinterest-p'
-        ],
+        ],*/
     ],
     /**
      * Habilities
