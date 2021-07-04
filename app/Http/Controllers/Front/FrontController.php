@@ -65,9 +65,11 @@ class FrontController extends Controller
     /**
      * 
      */
-    public function index()
+    public function index(Request $request)
     {
-        // notify()->success('Laravel Notify is awesome!');
+        
+        dd($request->getClientIps());
+
         return view($this->views->front)
             ->with('data', $this->data)
             ;
