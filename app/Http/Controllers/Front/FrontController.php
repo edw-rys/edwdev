@@ -10,7 +10,9 @@ use App\Models\Services;
 use App\Models\TypeExperience;
 use App\Models\TypeWorks;
 use App\Models\Works;
+use App\Repositories\ViewsRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
@@ -23,11 +25,18 @@ class FrontController extends Controller
      * Views
      */
     private $views ;
-
+    /**
+     * $viewsRepository
+     */
+    protected $viewsRepository;
     /**
      * Front Controller
      */
-    public function __construct() {
+    public function __construct(ViewsRepository $viewsRepository) {
+        /**
+         * Repositories
+         */
+        $this->viewsRepository = $viewsRepository;
         /**
          * Routes
          */
@@ -67,8 +76,20 @@ class FrontController extends Controller
      */
     public function index(Request $request)
     {
-        
-        // $request->server()
+        // $pageVisited = $request->cookie('is_visited');
+        $pageVisited = isset($_COOKIE['is_visited']);
+        dd(getClientIp(), $this->server->get('REMOTE_ADDR'), $request->getClientIp());
+        if (!$pageVisited) {
+            // $ip = $this->server->get('REMOTE_ADDR');
+            $this->viewsRepository->create(
+                [
+                    'ip_address'    => $request->getClientIp()
+                ]
+            );
+            Cookie::queue('is_visited', 'true', 60 * 24 * 365);
+            // cookie('is_visited', 'visite',60 * 24 * 365);
+        } 
+        // 
         return view($this->views->front)
             ->with('data', $this->data)
             ;
