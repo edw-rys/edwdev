@@ -68,7 +68,7 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         
-        dd($request->getClientIps());
+        dd($request->getClientIps(), $request->getClientIp(), $request->server());
 
         return view($this->views->front)
             ->with('data', $this->data)
