@@ -37,6 +37,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     /**
+     * @var array
+     */
+    protected $appends =['file_url', 'fullname'];
+    /**
+     * Function append file Url
+     */
+    public function getFileUrlAttribute()
+    {
+        return asset('files/profiles').'/'.$this->image;
+    }
+        /**
+     * Function append file Url
+     */
+    public function getFullnameAttribute()
+    {
+        return $this->name  ;
+    }
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function roles()
