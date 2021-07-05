@@ -1,6 +1,6 @@
 <section id="home" class="home d-flex align-items-center">
     <div class="container">
-        @include('notify::messages')
+        {{-- @include('notify::messages') --}}
         <!-- intro -->
         <div class="intro">
             <!-- avatar image -->
