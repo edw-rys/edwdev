@@ -78,7 +78,7 @@ class FrontController extends Controller
     {
         // $pageVisited = $request->cookie('is_visited');
         $pageVisited = isset($_COOKIE['is_visited']);
-        dd(getClientIp(), $this->server->get('REMOTE_ADDR'), $request->getClientIp());
+        dd(getClientIp(), $request->server->get('REMOTE_ADDR'), $request->getClientIp());
         if (!$pageVisited) {
             // $ip = $this->server->get('REMOTE_ADDR');
             $this->viewsRepository->create(
