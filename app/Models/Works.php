@@ -34,4 +34,9 @@ class Works extends Model
     {
         return asset('').'files/images/works/'. $this->thumbnail;
     }
+
+    public function childs()
+    {
+        return $this->hasMany(WorksHistory::class, 'work_id')->where('status', 'active');
+    }
 }

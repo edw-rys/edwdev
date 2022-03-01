@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWork extends Migration
+class CreateWorksHistoryContent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateWork extends Migration
      */
     public function up()
     {
-        Schema::create('work', function (Blueprint $table) {
+        Schema::create('works_history_content', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('image',200)->nullable();
-            $table->string('description')->nullable();
-            $table->string('system_name')->nullable();
-            $table->string('external_link')->nullable();
-            $table->unsignedBigInteger('type_id');
+            $table->longText('description')->nullable();
+            $table->unsignedBigInteger('work_history_id');
 
             $table->timestamps();
             $table->string('status')->default('active');
@@ -42,9 +40,9 @@ class CreateWork extends Migration
                 ->on('users')
                 ->onDelete('cascade');
                 
-            $table->foreign('type_id')
+            $table->foreign('work_history_id')
                 ->references('id')
-                ->on('type_works')
+                ->on('works_history')
                 ->onDelete('cascade');
         });
     }
@@ -56,6 +54,6 @@ class CreateWork extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('work');
+        Schema::dropIfExists('works_history_content');
     }
 }

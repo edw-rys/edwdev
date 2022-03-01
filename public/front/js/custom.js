@@ -313,7 +313,13 @@ $(function(){
   /*=========================================================================
    Bootstrap Scrollspy
    =========================================================================*/
-  $("body").scrollspy({ target: ".scrollspy"});
+  if (document.querySelector('.scrollspy')) {
+    try {
+      $("body").scrollspy({ target: ".scrollspy"});
+    } catch (error) {
+      
+    }
+  }
 
   /*=========================================================================
    Counterup JS for facts

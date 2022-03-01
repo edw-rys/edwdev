@@ -26,7 +26,7 @@
 
 </head>
 
-<body>
+<body class="main">
 
     <!-- Preloader -->
     <div id="preloader">
@@ -112,7 +112,7 @@
     <script src="{{ asset_front('js/morphext.min.js') }}"></script>
     <script src="{{ asset_front('js/parallax.min.js') }}"></script>
     <script src="{{ asset_front('js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset_front('js/custom.js') }}"></script>
+    <script src="{{ asset_front('js/custom.js') }}?v=1.2"></script>
     @yield('scripts_body_after')
 
 </body>

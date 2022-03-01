@@ -11,7 +11,7 @@
 	<!-- main menu -->
 	<nav>
 		<ul class="vertical-menu scrollspy">
-			<li class="active"><a href="#home"><i class="icon-home"></i>Home</a></li>
+			<li class="active"><a href="/"><i class="icon-home"></i>Home</a></li>
 			<li><a href="#about"><i class="icon-user-following"></i>Acerca de mi</a></li>
 			<li><a href="#services"><i class="icon-briefcase"></i>Servicios</a></li>
 			<li><a href="#experience"><i class="icon-graduation"></i>Experiencia</a></li>

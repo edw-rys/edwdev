@@ -124,5 +124,23 @@ class FrontController extends Controller
             'token'     => csrf_token()
         ]);
     }
+    /**
+     * Show a item
+     * @param $system_name
+     */
+    public function showWork($system_name)
+    {
+
+        $work = Works::where('system_name', $system_name)
+            ->with([
+                'childs','childs.items'
+            ])
+            ->first();
+        if ($work == null) {
+            abort(404);
+        }
+        return view('front.pages.front.works.show')
+            ->with('item', $work);
+    }
     
 }

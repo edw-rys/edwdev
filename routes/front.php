@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Front\FrontController@index')->name('front.index');
 Route::get('works/list/{page}/{take}', 'Front\FrontController@getWorksView')->name('front.works.list');
 Route::post('contact/send', 'Front\FrontController@sendEmail')->name('front.contact.send');
+
+
+Route::get('work/{system_name}', 'Front\FrontController@showWork')->name('front.works.show');

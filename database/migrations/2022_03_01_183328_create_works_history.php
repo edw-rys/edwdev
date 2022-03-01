@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWork extends Migration
+class CreateWorksHistory extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,20 @@ class CreateWork extends Migration
      */
     public function up()
     {
-        Schema::create('work', function (Blueprint $table) {
+        Schema::create('works_history', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->string('image',200)->nullable();
             $table->string('description')->nullable();
             $table->string('system_name')->nullable();
             $table->string('external_link')->nullable();
-            $table->unsignedBigInteger('type_id');
-
-            $table->timestamps();
+            $table->unsignedBigInteger('work_id');
             $table->string('status')->default('active');
             $table->dateTime('deleted_at')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->timestamps();
             // Relationship
             $table->foreign('created_by')
                 ->references('id')
@@ -42,9 +41,9 @@ class CreateWork extends Migration
                 ->on('users')
                 ->onDelete('cascade');
                 
-            $table->foreign('type_id')
+            $table->foreign('work_id')
                 ->references('id')
-                ->on('type_works')
+                ->on('work')
                 ->onDelete('cascade');
         });
     }
@@ -56,6 +55,6 @@ class CreateWork extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('work');
+        Schema::dropIfExists('works_history');
     }
 }
