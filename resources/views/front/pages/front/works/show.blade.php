@@ -71,10 +71,16 @@
                         <div class="spacer d-md-none d-lg-none" data-height="30" style="height: 30px;"></div>
                     </div>
                     <div class="col-md-9 triangle-left-md triangle-top-sm">
-                        <div class="rounded bg-white shadow-dark padding-30 gallery__item"
-                            data-src="{{ $child->file_url }}">
-                            <img src="{{ $child->file_url }}" class="w-100" alt="">
-                        </div>
+                        @if ($child->image)
+                            <div class="rounded bg-white shadow-dark padding-30 gallery__item"
+                                data-src="{{ $child->file_url }}">
+                                <img src="{{ $child->file_url }}" class="w-100" alt="">
+                            </div>
+                        @else
+                            @if ($child->external_link)
+                            <iframe style="width: 100%;min-height: 300px;" src="{{$child->external_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            @endif
+                        @endif
                     </div>
                 </div>
                 <div class="row">
