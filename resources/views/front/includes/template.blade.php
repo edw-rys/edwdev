@@ -85,7 +85,7 @@
 
     <!-- main layout -->
     <main class="content">
-		<img src="{{ asset('files/images/my/samoyed_icon.png') }}" alt="My samoyedo" class="my-samoyed-r-b">
+		{{-- <img src="{{ asset('files/images/my/samoyed_icon.png') }}" alt="My samoyedo" class="my-samoyed-r-b"> --}}
         @yield('section')
 
     </main>
