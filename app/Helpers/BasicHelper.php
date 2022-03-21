@@ -3,6 +3,7 @@
 use App\Repositories\ChannelPaymentRepository;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleUserRepository;
+use App\Repositories\ViewsRepository;
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Collection;
@@ -336,5 +337,29 @@ if (! function_exists('getClientIp')) {
                 }
             }
         }
+    }
+}
+use Illuminate\Support\Facades\Cookie;
+
+if (! function_exists('visitPage')) {
+    /**
+     * Set ip
+     *
+     */
+    function visitPage()
+    {
+        $viewsRepository = new ViewsRepository ;
+        $pageVisited = isset($_COOKIE['is_visited']);
+        // dd(getClientIp(), $request->server->get('REMOTE_ADDR'), $request->getClientIp());
+        if (!$pageVisited) {
+            // $ip = $this->server->get('REMOTE_ADDR');
+            $viewsRepository->create(
+                [
+                    'ip_address'    => getClientIp()
+                ]
+            );
+            Cookie::queue('is_visited', 'true', 60 * 24 * 365);
+            // cookie('is_visited', 'visite',60 * 24 * 365);
+        } 
     }
 }

@@ -12,7 +12,6 @@ use App\Models\TypeWorks;
 use App\Models\Works;
 use App\Repositories\ViewsRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
@@ -77,18 +76,7 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         // $pageVisited = $request->cookie('is_visited');
-        $pageVisited = isset($_COOKIE['is_visited']);
-        // dd(getClientIp(), $request->server->get('REMOTE_ADDR'), $request->getClientIp());
-        if (!$pageVisited) {
-            // $ip = $this->server->get('REMOTE_ADDR');
-            $this->viewsRepository->create(
-                [
-                    'ip_address'    => getClientIp()
-                ]
-            );
-            Cookie::queue('is_visited', 'true', 60 * 24 * 365);
-            // cookie('is_visited', 'visite',60 * 24 * 365);
-        } 
+        visitPage();
         // 
         return view($this->views->front)
             ->with('data', $this->data)
@@ -99,6 +87,8 @@ class FrontController extends Controller
      */
     public function getWorksView($page, $take)
     {
+        visitPage();
+
         $works = Works::where('status', 'active')
             ->orderBy('id','desc')
             ->with('type')
