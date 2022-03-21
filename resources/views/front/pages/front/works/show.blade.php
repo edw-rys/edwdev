@@ -78,7 +78,7 @@
                             </div>
                         @else
                             @if ($child->external_link)
-                            <iframe style="width: 100%;min-height: 300px;" src="{{$child->external_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe style="width: 100%;min-height: 350px;" src="{{$child->external_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             @endif
                         @endif
                     </div>
