@@ -62,7 +62,7 @@
             <div class="spacer" data-height="60"></div>
 
             @foreach ($item->childs as $child)
-                <div class="row mb-3">
+                <div class="row mb-3 mt-3">
                     <div class="col-md-3">
                         <div class="text-center text-md-left rounded card p-1">
                             <!-- avatar image -->
