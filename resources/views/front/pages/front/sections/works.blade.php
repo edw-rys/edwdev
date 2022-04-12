@@ -73,7 +73,7 @@
                         @if ($page == 1)
                             <li class="list-inline-item">1</li>
                         @else
-                            <li class="list-inline-item"><a href="{{ route('front.works.list',['page'=> $page, 'take'=> count($works)]) }}">{{ $page }}</a></li>
+                            <li class="list-inline-item"><a href="{{ route('front.works.list',['page'=> $page, 'take'=> count($works), 'get-prev-cards'=> 'shows']) }}">{{ $page }}</a></li>
                         @endif
                     @endforeach
                     {{-- @php

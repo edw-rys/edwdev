@@ -87,6 +87,9 @@ class FrontController extends Controller
      */
     public function getWorksView($page, $take)
     {
+        if (request('get-prev-cards') != 'shows') {
+            return redirect()->route('front.index');
+        }
         visitPage();
 
         $works = Works::where('status', 'active')
