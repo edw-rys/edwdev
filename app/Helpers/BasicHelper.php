@@ -350,16 +350,58 @@ if (! function_exists('visitPage')) {
     {
         $viewsRepository = new ViewsRepository ;
         $pageVisited = isset($_COOKIE['is_visited']);
+        $visit_id = '-1';
         // dd(getClientIp(), $request->server->get('REMOTE_ADDR'), $request->getClientIp());
         if (!$pageVisited) {
             // $ip = $this->server->get('REMOTE_ADDR');
-            $viewsRepository->create(
+            $visit_id = $viewsRepository->create(
                 [
                     'ip_address'    => getClientIp()
                 ]
             );
             Cookie::queue('is_visited', 'true', 60 * 24 * 365);
-            // cookie('is_visited', 'visite',60 * 24 * 365);
         } 
+        return $visit_id;
+    }
+}
+
+if (! function_exists('setVisitPage')) {
+    /**
+     * Set ip
+     * @param $id
+     */
+    function setVisitPage($id)
+    {
+        $item = (new ViewsRepository)->find($id) ;
+
+        if($item == null)
+            abort(404);
+        
+
+        if($item->ip_address == '127.0.0.1' || $item->country_code ){
+            return;
+        }
+        $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address);
+        $dataSolicitud = json_decode($informacionSolicitud);
+        dd($dataSolicitud);
+        if($dataSolicitud->geoplugin_status >= 200 && $dataSolicitud->geoplugin_status< 300){
+            (new ViewsRepository )
+                ->where('ip_address', $item->ip_address)
+                ->whereNull('country_code')
+                ->update([
+                    'city'  => $dataSolicitud->geoplugin_city ?? null,
+                    'region_code'   => $dataSolicitud->geoplugin_regionCode?? null,
+                    'region'    => $dataSolicitud->geoplugin_region?? null,
+                    'region_name'   => $dataSolicitud->geoplugin_regionName?? null,
+                    'country_code'  => $dataSolicitud->geoplugin_countryCode?? null,
+                    'country_name'  => $dataSolicitud->geoplugin_countryName?? null,
+                    'continent_code'    => $dataSolicitud->geoplugin_continentCode?? null,
+                    'continent_name'    => $dataSolicitud->geoplugin_continentName?? null,
+                    'latitude'  => $dataSolicitud->geoplugin_latitude?? null,
+                    'longitude' => $dataSolicitud->geoplugin_longitude?? null,
+                    'timezone'  => $dataSolicitud->geoplugin_timezone?? null,
+                    'location_accuracy_radius'  => $dataSolicitud->geoplugin_locationAccuracyRadius?? null,
+                ]);
+        }
     }
 }

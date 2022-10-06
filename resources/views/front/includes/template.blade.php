@@ -115,6 +115,23 @@
     <script src="{{ asset_front('js/custom.js') }}?v=1.2"></script>
     @yield('scripts_body_after')
 
+    @if ($visit_id != '-1')
+        
+    @endif
+    <script>
+        $.ajax(
+            {
+                method: 'GET',
+                url: '{{ route('front.set-visitit-api', $visit_id)}}',
+                data: {
+                    // 'id': '{{ $visit_id }}'
+                }
+            }
+        )
+        .done(function(response) {
+        });
+    
+    </script>
 </body>
 
 </html>

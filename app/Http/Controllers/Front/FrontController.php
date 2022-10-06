@@ -46,6 +46,7 @@ class FrontController extends Controller
         $this->views = (object) [
             'front'         => 'front.pages.front.index',
             'works_list'    => 'front.pages.front.sections.works_list',
+            'popularity'    => 'front.pages.front.popularity',
         ];
 
         $this->take = 4;
@@ -76,12 +77,32 @@ class FrontController extends Controller
     public function index(Request $request)
     {
         // $pageVisited = $request->cookie('is_visited');
-        visitPage();
+        $visit_id = visitPage();
         // 
         return view($this->views->front)
             ->with('data', $this->data)
+            ->with('visit_id', $visit_id)
             ;
     }
+
+    public function visitors()
+    {
+        $visit_id = visitPage();
+        // 
+        return view($this->views->popularity)
+            ->with('data', $this->data)
+            ->with('visit_id', $visit_id)
+            ;
+    }
+    /**
+     * @param $id
+     */
+    public function setVisitPage($id)
+    {
+        setVisitPage($id);
+        return response()->json([]);
+    }
+
     /**
      * List a items
      */
@@ -90,7 +111,7 @@ class FrontController extends Controller
         if (request('get-prev-cards') != 'shows') {
             return redirect()->route('front.index');
         }
-        visitPage();
+        $visit_id = visitPage();
 
         $works = Works::where('status', 'active')
             ->orderBy('id','desc')
@@ -100,6 +121,7 @@ class FrontController extends Controller
         // dd($works);
         return view($this->views->works_list)
             ->with('works', $works)
+            ->with('visit_id', $visit_id)
             // ->render()
             ;
     }
