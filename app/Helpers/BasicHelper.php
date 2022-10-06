@@ -381,7 +381,13 @@ if (! function_exists('setVisitPage')) {
         if($item->ip_address == '127.0.0.1' || $item->country_code ){
             return;
         }
-        $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address);
+        $arrContextOptions=array(
+            "ssl"=>array(
+                "verify_peer"=>false,
+                "verify_peer_name"=>false,
+            ),
+        );
+        $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address, false, stream_context_create($arrContextOptions));
         $dataSolicitud = json_decode($informacionSolicitud);
         dd($dataSolicitud);
         if($dataSolicitud->geoplugin_status >= 200 && $dataSolicitud->geoplugin_status< 300){
