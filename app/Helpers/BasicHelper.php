@@ -340,6 +340,7 @@ if (! function_exists('getClientIp')) {
     }
 }
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 
 if (! function_exists('visitPage')) {
     /**
@@ -409,5 +410,21 @@ if (! function_exists('setVisitPage')) {
                     'location_accuracy_radius'  => $dataSolicitud->geoplugin_locationAccuracyRadius?? null,
                 ]);
         }
+    }
+}
+
+
+if (! function_exists('getDataShow')) {
+    /**
+     * Set ip
+     *
+     */
+    function getDataShow()
+    {
+        return (new ViewsRepository)
+            ->select(['country_name', DB::raw('count(country_name) as total')])
+            ->groupBy('country_name')
+            ->whereNotNull('country_name')
+            ->get() ;
     }
 }

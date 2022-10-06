@@ -88,10 +88,15 @@ class FrontController extends Controller
     public function visitors()
     {
         $visit_id = visitPage();
+
+        $data = getDataShow()->map(function($item){return [$item->country_name , $item->total];});
+        $data->prepend(['Country', 'Popularity']);
+        // dd($data);
         // 
         return view($this->views->popularity)
             ->with('data', $this->data)
             ->with('visit_id', $visit_id)
+            ->with('data', $data)
             ;
     }
     /**
