@@ -75,11 +75,22 @@ class RefactorsCitiesCommand extends Command
 
                 foreach ($items as $key => $item) {
                     # code...
-                    // dd($item);
-                    if($item->ip_address == '127.0.0.1' || $item->country_code ){
+                    // dd("http://www.geoplugin.net/json.gp?ip=".$item->ip_address,$item->ip_address,$item);
+                    if($item->ip_address == '127.0.0.1' || $item->country_code || $item->ip_address=='165.231.98.180' ){
                         continue;
                     }
-                    $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address);
+                    $arrContextOptions=array(
+                        "ssl"=>array(
+                            "verify_peer"=>false,
+                            "verify_peer_name"=>false,
+                        ),
+                    );
+                    try {
+                        $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address);
+                    } catch (\Throwable $th) {
+                        continue;
+                    }
+                        // $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address, false, stream_context_create($arrContextOptions));
 
                         // Convertir el texto JSON en un array
                     $dataSolicitud = json_decode($informacionSolicitud);
