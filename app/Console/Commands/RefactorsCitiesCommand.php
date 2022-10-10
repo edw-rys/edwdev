@@ -45,7 +45,7 @@ class RefactorsCitiesCommand extends Command
     public function handle()
     {
 
-
+        $listIgnore = [];
 
         /*(new ViewsRepository)
             ->whereNull('country_code')
@@ -71,41 +71,68 @@ class RefactorsCitiesCommand extends Command
         $viewsRepository = (new ViewsRepository )
             ->getModel()
             ->whereNull('country_code')
-            ->chunk(100, function($items){
+            ->where('no_accesible', '!=', '1')
+            ->chunk(100, function($items) use ( &$listIgnore ){
 
                 foreach ($items as $key => $item) {
                     # code...
                     // dd("http://www.geoplugin.net/json.gp?ip=".$item->ip_address,$item->ip_address,$item);
 
+                    
+                    $item->original_ip_address = $item->ip_address;
                     $item->ip_address = str_replace(' ', ',', $item->ip_address);
                     $item->ip_address = explode(',', $item->ip_address);
                     $item->ip_address = isset($item->ip_address[0])? $item->ip_address[0] : null;
                     // dd($item->toArray());
-                    if($item->ip_address == '127.0.0.1' || $item->country_code || $item->ip_address=='165.231.98.180' ){
+                    if($item->ip_address == '127.0.0.1' || $item->country_code ){
                         continue;
                     }
+                    if(in_array( $item->original_ip_address, $listIgnore)){
+                        continue;
+                    }
+                    $viewCount = (new ViewsRepository )
+                        ->whereNull('country_code')
+                        ->where('ip_address', $item->original_ip_address)
+                        ->count();
+                    if($viewCount > 1){
+                        $listIgnore[] = $item->original_ip_address;
+                    }
+
+                    // $viewCont = (new ViewsRepository )
+                    //     ->whereNull('country_code')
+                    //     ->find($item->id);
+
+                    // if($viewCont == null){
+                    //     continue;
+                    // }
                     $arrContextOptions=array(
                         "ssl"=>array(
                             "verify_peer"=>false,
                             "verify_peer_name"=>false,
                         ),
                     );
+                        
                     try {
                         $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address);
                     } catch (\Throwable $th) {
-                        dd($th, $item->toArray());
+                        $this->info('IP: '. $item->ip_address.', falla: '.$th->getMessage());
+                        // dd($th, $item->toArray());
                         continue;
                     }
                         // $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address, false, stream_context_create($arrContextOptions));
 
                         // Convertir el texto JSON en un array
                     $dataSolicitud = json_decode($informacionSolicitud);
+                    if($dataSolicitud == null){
+                        continue;
+                    }
                     if($dataSolicitud->geoplugin_status >= 200 && $dataSolicitud->geoplugin_status< 300){
 
                         // dd($item->toArray(), $dataSolicitud->geoplugin_status);   
 
-                        (new ViewsRepository )->where('ip_address', $item->ip_address)
+                        (new ViewsRepository )->where('ip_address', $item->original_ip_address)
                             ->update([
+                                'ip_address'    => $item->ip_address,
                                 'city'  => $dataSolicitud->geoplugin_city ?? null,
                                 'region_code'   => $dataSolicitud->geoplugin_regionCode?? null,
                                 'region'    => $dataSolicitud->geoplugin_region?? null,
@@ -118,6 +145,7 @@ class RefactorsCitiesCommand extends Command
                                 'longitude' => $dataSolicitud->geoplugin_longitude?? null,
                                 'timezone'  => $dataSolicitud->geoplugin_timezone?? null,
                                 'location_accuracy_radius'  => $dataSolicitud->geoplugin_locationAccuracyRadius?? null,
+                                'no_accesible'  => 1
                             ]);
                         // dd($item->toArray());
                         // $item->city = $dataSolicitud->geoplugin_city;
@@ -134,7 +162,26 @@ class RefactorsCitiesCommand extends Command
                         // $item->location_accuracy_radius = $dataSolicitud->geoplugin_locationAccuracyRadius;
                         // $item->save();
                         // dd($item);
-                        $this->info('Visita desde '. $dataSolicitud->geoplugin_countryName);
+                        $this->info('IP: '. $item->ip_address.', visita desde '. $dataSolicitud->geoplugin_countryName);
+                    }
+                    if($dataSolicitud->geoplugin_status == 404){
+                        (new ViewsRepository )->where('ip_address', $item->ip_address)
+                            ->update([
+                                'city'  => $dataSolicitud->geoplugin_city ?? null,
+                                'region_code'   => $dataSolicitud->geoplugin_regionCode?? null,
+                                'region'    => $dataSolicitud->geoplugin_region?? null,
+                                'region_name'   => $dataSolicitud->geoplugin_regionName?? null,
+                                'country_code'  => $dataSolicitud->geoplugin_countryCode?? null,
+                                'country_name'  => $dataSolicitud->geoplugin_countryName?? null,
+                                'continent_code'    => $dataSolicitud->geoplugin_continentCode?? null,
+                                'continent_name'    => $dataSolicitud->geoplugin_continentName?? null,
+                                'latitude'  => $dataSolicitud->geoplugin_latitude?? null,
+                                'longitude' => $dataSolicitud->geoplugin_longitude?? null,
+                                'timezone'  => $dataSolicitud->geoplugin_timezone?? null,
+                                'location_accuracy_radius'  => $dataSolicitud->geoplugin_locationAccuracyRadius?? null,
+                                'no_accesible'  => 1
+                            ]);
+                        
                     }
                 }
             });

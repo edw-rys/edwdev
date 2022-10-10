@@ -30,5 +30,6 @@ class Views extends Model
         'location_accuracy_radius',
         'updated_at',
         'deleted_at',
+        'no_accesible'
     ];
 }
