@@ -425,6 +425,7 @@ if (! function_exists('getDataShow')) {
             ->select(['country_name', DB::raw('count(country_name) as total')])
             ->groupBy('country_name')
             ->whereNotNull('country_name')
+            ->orderBy(DB::raw('count(country_name)'))
             ->get() ;
     }
 }
