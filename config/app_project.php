@@ -34,6 +34,11 @@ return [
             'url'   => 'https://github.com/edw-rys',
             'icon'  => 'fab fa-github'
         ],
+        (object) [
+            'name'  => 'YouTube',
+            'url'   => 'https://www.youtube.com/channel/UCMUrgb41heN2FjYBbbUVr5g',
+            'icon'  => 'fab fa-youtube'
+        ],
         /*(object) [
             'name'  => 'Pinterest',
             'url'   => 'https://www.pinterest.com/edw.rysv/',
