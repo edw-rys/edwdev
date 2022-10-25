@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
 use App\Mail\ContactMail;
+use App\Models\Habilities;
 use App\Models\PersonalGoals;
 use App\Models\Services;
 use App\Models\TypeExperience;
@@ -60,7 +61,8 @@ class FrontController extends Controller
             'name'                  => config('app_project.name'),
             'more'                  => PersonalGoals::where('status', 'active')->get(),
             // 'more'                  => config('app_project.more'),
-            'percentage_habilities' => config('app_project.percentage_habilities'),
+            // 'percentage_habilities' => config('app_project.percentage_habilities'),
+            'percentage_habilities' => Habilities::where('status', 'active')->get(),
             'services'              => Services::where('status', 'active')->get(),
             'types_experience'      => TypeExperience::where('status', 'active')->with('experiences')->get(),
             'type_works'            => TypeWorks::where('status', 'active')->get(),

@@ -20,7 +20,7 @@
             <div class="col-md-9 triangle-left-md triangle-top-sm">
                 <div class="rounded bg-white shadow-dark padding-30">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-8 col-12 col-xs-6">
                             <!-- about text -->
                             <p>@lang($about)</p>
                             <div class="mt-3">
@@ -28,22 +28,23 @@
                             </div>
                             <div class="spacer d-md-none d-lg-none" data-height="30"></div>
                         </div>
-                        <div class="col-md-6">
-                            @foreach ($percentage_habilities as $item)
-                                <!-- skill item -->
-                                <div class="skill-item">
-                                    <div class="skill-info clearfix">
-                                        <h4 class="float-left mb-3 mt-0">{{ $item->name }}</h4>
-                                        <!-- <span class="float-right">{{ $item->total }}%</span> -->
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar data-background" role="progressbar" aria-valuemin="0"
-                                            aria-valuemax="100" aria-valuenow="100" data-color="{{ $item->color }}">
+                        <div class="col-md-4 col-12 col-xs-6">
+                            <div class="row">
+                                @foreach ($percentage_habilities as $item)
+                                    <!-- skill item -->
+                                    <div class="skill-item col-4 col-md-6 col-xs-4">
+                                        <img src="{{ asset($item->icon)}}" style="width: 60px;height: 60px;" alt="">
+                                        <div class="skill-info clearfix">
+                                            <h4 class="text-center mb-0 mt-0">{{ $item->name }}</h4>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar data-background" role="progressbar" aria-valuemin="0"
+                                                aria-valuemax="100" aria-valuenow="100" data-color="{{ $item->color }}">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="spacer" data-height="20"></div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
