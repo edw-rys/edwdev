@@ -34,7 +34,7 @@
                                 <div class="skill-item">
                                     <div class="skill-info clearfix">
                                         <h4 class="float-left mb-3 mt-0">{{ $item->name }}</h4>
-                                        <span class="float-right">{{ $item->total }}%</span>
+                                        <!-- <span class="float-right">{{ $item->total }}%</span> -->
                                     </div>
                                     <div class="progress">
                                         <div class="progress-bar data-background" role="progressbar" aria-valuemin="0"
