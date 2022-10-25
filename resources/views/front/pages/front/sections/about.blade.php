@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="progress">
                                         <div class="progress-bar data-background" role="progressbar" aria-valuemin="0"
-                                            aria-valuemax="100" aria-valuenow="{{ $item->total }}" data-color="{{ $item->color }}">
+                                            aria-valuemax="100" aria-valuenow="100" data-color="{{ $item->color }}">
                                         </div>
                                     </div>
                                     <div class="spacer" data-height="20"></div>
