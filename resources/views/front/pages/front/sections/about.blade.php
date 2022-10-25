@@ -32,7 +32,7 @@
                             <div class="row">
                                 @foreach ($percentage_habilities as $item)
                                     <!-- skill item -->
-                                    <div class="skill-item col-4 col-md-6 col-xs-4">
+                                    <div class="text-center skill-item col-4 col-md-6 col-xs-4">
                                         <img src="{{ asset($item->icon)}}" style="width: 60px;height: 60px;" alt="">
                                         <div class="skill-info clearfix">
                                             <h4 class="text-center mb-0 mt-0">{{ $item->name }}</h4>
