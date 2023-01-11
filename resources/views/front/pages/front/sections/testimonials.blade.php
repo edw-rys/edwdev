@@ -16,14 +16,18 @@
                     <img src="{{ asset('front/images/business/foto perfil 1.png')}}" alt="SmartFrame Dev" />
                 </div>
                 <h4 class="mt-3 mb-0">SmartFrame Dev</h4>
-                <span class="subtitle">Empresa Desarrolladora de Software y servicio técnico</span>
+                <span class="subtitle"></span>
                 <div class="bg-white padding-30 shadow-dark rounded triangle-top position-relative mt-4">
-                    <p class="mb-0">Alianza con SmartFrame Dev en el desarrollo de software y diseño de sitios web 👍</p>
+                    <p class="mb-0">
+                        Empresa Desarrolladora de Software y servicio técnico
+                        <!-- Alianza con SmartFrame Dev en el desarrollo de software y diseño de sitios web  -->
+                        👍
+                    </p>
                 </div>
             </div>
 
             <!-- testimonial item -->
-            <div class="testimonial-item text-center mx-auto">
+            <!-- <div class="testimonial-item text-center mx-auto">
                 <div class="thumb mb-3 mx-auto">
                     <img src="{{ asset('front/images/business/atlantis.png')}}" alt="AtlantisLowTim" />
                 </div>
@@ -32,7 +36,7 @@
                 <div class="bg-white padding-30 shadow-dark rounded triangle-top position-relative mt-4">
                     <p class="mb-0">¡Marca en construcción! 🔥</p>
                 </div>
-            </div>
+            </div>-->
 
         </div>
 
