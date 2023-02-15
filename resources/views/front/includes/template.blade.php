@@ -116,13 +116,14 @@
     @yield('scripts_body_after')
 
         <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DGE9FYDNK8"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQMRZBXPBF"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-        gtag('config', 'G-DGE9FYDNK8');
+    gtag('config', 'G-SQMRZBXPBF');
     </script>
 {{-- 
     @if ($visit_id != '-1')
