@@ -24,6 +24,15 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+     <!-- Google tag (gtag.js) -->
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQMRZBXPBF"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+ 
+     gtag('config', 'G-SQMRZBXPBF');
+     </script>
 </head>
 
 <body class="main">
@@ -115,16 +124,6 @@
     <script src="{{ asset_front('js/custom.js') }}?v=1.2"></script>
     @yield('scripts_body_after')
 
-        <!-- Google tag (gtag.js) -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQMRZBXPBF"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-SQMRZBXPBF');
-    </script>
 {{-- 
     @if ($visit_id != '-1')
         <script>
