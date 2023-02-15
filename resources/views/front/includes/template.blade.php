@@ -114,6 +114,16 @@
     <script src="{{ asset_front('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset_front('js/custom.js') }}?v=1.2"></script>
     @yield('scripts_body_after')
+
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DGE9FYDNK8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DGE9FYDNK8');
+    </script>
 {{-- 
     @if ($visit_id != '-1')
         <script>
