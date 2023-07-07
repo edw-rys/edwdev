@@ -1,5 +1,5 @@
 <?php
-
+// php /var/www/vhosts/edw-dev.com/httpdocs/app/artisan refactor-cities
 namespace App\Console;
 
 use App\Console\Commands\RefactorsCitiesCommand;
@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('refactor-cities')->everyMinute();
+        $schedule->command('refactor-cities')->everySixHours();
         // $schedule->command('inspire')->hourly();
     }
 
