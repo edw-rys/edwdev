@@ -7,7 +7,11 @@
     <meta name="description" content="{{ config('app_project.description') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/me/gafas.jpg') }}">
-
+    <style>
+        :root{
+            --color-template-primary: #3A3C41;
+        }
+    </style>
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="{{ asset_front('css/bootstrap.min.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset_front('css/all.min.css') }}" type="text/css" media="all">
@@ -15,7 +19,7 @@
     <link rel="stylesheet" href="{{ asset_front('css/slick.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset_front('css/animate.css') }}" type="text/css" media="all">
     <link rel="stylesheet" href="{{ asset_front('css/magnific-popup.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ asset_front('css/style.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset_front('css/style.css') }}?1" type="text/css" media="all">
     {{-- @notifyCss --}}
     @yield('links')
     @yield('scripts_head')
