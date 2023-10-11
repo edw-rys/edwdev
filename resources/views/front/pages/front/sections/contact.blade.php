@@ -14,8 +14,7 @@
                 <!-- contact info -->
                 <div class="contact-info">
                     <h3 class="wow fadeInUp">¡Hablemos de todo!</h3>
-                    <p class="wow fadeInUp">¿Deseas contactarme directamente? Envíame un <a href="mailto:edw-toni@hotmail.com">Correo</a>. 👋
-                    </p>
+                    
                 </div>
             </div>
 
