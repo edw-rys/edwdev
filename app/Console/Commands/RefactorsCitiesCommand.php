@@ -118,7 +118,7 @@ class RefactorsCitiesCommand extends Command
                         $this->info('IP: '. $item->ip_address.', falla: '.$th->getMessage());
                         // dd($th, $item->toArray());
                         continue;
-                    }
+                    }  
                         // $informacionSolicitud = file_get_contents("http://www.geoplugin.net/json.gp?ip=".$item->ip_address, false, stream_context_create($arrContextOptions));
 
                         // Convertir el texto JSON en un array
