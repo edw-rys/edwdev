@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,7 @@ Route::post('contact/send', 'Front\FrontController@sendEmail')->name('front.cont
 Route::get('work/{system_name}', 'Front\FrontController@showWork')->name('front.works.show');
 
 Route::get('set-visit-api/{id}', 'Front\FrontController@setVisitPage')->name('front.set-visitit-api');
+
+Route::get('my-headers', function (Request $request) {
+   dd($request->headers->all(), getClientIp()) ;
+});
