@@ -25,5 +25,7 @@ Route::get('work/{system_name}', 'Front\FrontController@showWork')->name('front.
 Route::get('set-visit-api/{id}', 'Front\FrontController@setVisitPage')->name('front.set-visitit-api');
 
 Route::get('my-headers', function (Request $request) {
-   dd($request->headers->all(), getClientIp()) ;
+    if($request->input('ooo')=='mys'){
+        dd($request->headers->all(), getClientIp()) ;
+    }
 });
