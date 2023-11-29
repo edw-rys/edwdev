@@ -12,14 +12,21 @@
             --color-template-primary: #3A3C41;
         }
     </style>
+    @php
+        $versionFiles='1.1';
+    @endphp
+    <script>
+        const version_files_app = '{{ $versionFiles }}';
+    </script>
     <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="{{ asset_front('css/bootstrap.min.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ asset_front('css/all.min.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ asset_front('css/simple-line-icons.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ asset_front('css/slick.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ asset_front('css/animate.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ asset_front('css/magnific-popup.css') }}" type="text/css" media="all">
-    <link rel="stylesheet" href="{{ asset_front('css/style.css') }}?1" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset_front('css/bootstrap.min.css') . '?version='.$versionFiles }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset_front('css/all.min.css') . '?version='.$versionFiles}}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset_front('css/simple-line-icons.css') . '?version='.$versionFiles}}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset_front('css/slick.css') . '?version='.$versionFiles}}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset_front('css/animate.css'). '?version='.$versionFiles }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset_front('css/magnific-popup.css'). '?version='.$versionFiles }}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{ asset_front('css/style.css') . '?version='.$versionFiles}}" type="text/css" media="all">
+    <link rel="manifest" href="{{ asset_front('/js/pwa/manifest.json') . '?version='.$versionFiles}}" type="text/css" media="all">
     {{-- @notifyCss --}}
     @yield('links')
     @yield('scripts_head')
@@ -27,16 +34,15 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
      <!-- Google tag (gtag.js) -->
-     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQMRZBXPBF"></script>
-     <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
- 
-     gtag('config', 'G-SQMRZBXPBF');
-     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQMRZBXPBF"></script>
+    <script src="{{ asset_front('js/pwa/script.js')}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SQMRZBXPBF');
+    </script>
 </head>
 
 <body class="main">
@@ -109,23 +115,23 @@
 
     @yield('scripts_body_before')
     <!-- SCRIPTS -->
-    <script src="{{ asset_front('js/jquery-1.12.3.min.js') }}"></script>
-    <script src="{{ asset_front('js/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset_front('js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset_front('js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset_front('js/popper.min.js') }}"></script>
-    <script src="{{ asset_front('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset_front('js/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset_front('js/infinite-scroll.min.js') }}"></script>
-    <script src="{{ asset_front('js/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset_front('js/slick.min.js') }}"></script>
-    <script src="{{ asset_front('js/contact.js') }}"></script>
-    <script src="{{ asset_front('js/validator.js') }}"></script>
-    <script src="{{ asset_front('js/wow.min.js') }}"></script>
-    <script src="{{ asset_front('js/morphext.min.js') }}"></script>
-    <script src="{{ asset_front('js/parallax.min.js') }}"></script>
-    <script src="{{ asset_front('js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset_front('js/custom.js') }}?v=1.2"></script>
+    <script src="{{ asset_front('js/jquery-1.12.3.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/jquery.easing.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/jquery.waypoints.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/jquery.counterup.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/popper.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/bootstrap.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/isotope.pkgd.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/infinite-scroll.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/imagesloaded.pkgd.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/slick.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/contact.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/validator.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/wow.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/morphext.min.js') . '?version='.$versionFiles}}"></script>
+    <script src="{{ asset_front('js/parallax.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/jquery.magnific-popup.min.js'). '?version='.$versionFiles }}"></script>
+    <script src="{{ asset_front('js/custom.js'). '?version='.$versionFiles }}"></script>
     @yield('scripts_body_after')
 
 {{-- 
