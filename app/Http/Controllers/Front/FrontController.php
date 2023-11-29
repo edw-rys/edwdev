@@ -138,7 +138,7 @@ class FrontController extends Controller
      */
     public function sendEmail(ContactRequest $request)
     {
-        Mail::to(config('app_project.emails.send'))->queue( new ContactMail($request->input('message'), $request->input('subject'), $request->input('name'), $request->input('email')));
+        Mail::to(config('app_project.emails.send'))->queue( new ContactMail($request->input('message'), $request->input('subject'), $request->input('name'), $request->input('email'), getClientIp() ));
 
         return response()->json([
             'type'      => 'success',

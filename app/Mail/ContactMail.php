@@ -15,17 +15,19 @@ class ContactMail extends Mailable
     public $email;
     public $subject;
     public $message;
+    public $ip;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($message , $subject, $name, $email)
+    public function __construct($message , $subject, $name, $email, $ip)
     {
         $this->name = $name;
         $this->email = $email;
         $this->subject = $subject;
         $this->message = $message;
+        $this->ip= $ip;
     }
 
     /**
@@ -40,6 +42,7 @@ class ContactMail extends Mailable
             ->with('identification', '')
             ->with('name', $this->name)
             ->with('email', $this->email)
+            ->with('ip', $this->id)
             ->with('message', $this->message)
             ;
     }

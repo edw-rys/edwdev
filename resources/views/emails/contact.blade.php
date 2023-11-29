@@ -8,6 +8,8 @@
 
 # CI: {{ $identification }}
 
+# IP: {{ $ip }}
+
 {{ $message }}
 
 Saludos,<br>
