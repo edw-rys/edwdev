@@ -42,7 +42,7 @@ class ContactMail extends Mailable
             ->with('identification', '')
             ->with('name', $this->name)
             ->with('email', $this->email)
-            ->with('ip', $this->id)
+            ->with('ip', $this->ip)
             ->with('message', $this->message)
             ;
     }
