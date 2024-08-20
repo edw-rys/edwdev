@@ -69,7 +69,7 @@ class CheckScheduleConsuladoCommand extends Command
                 $this->info('No hubo suerte en la búsqueda ('.$attempt.')');
                 $this->processCommand->detail_error = $th->getMessage();
                 $this->processCommand->last_status = 'error';
-                $this->processCommand->next_execute = Carbon::now()->addMinutes(5);
+                $this->processCommand->next_execute = Carbon::now()->addMinutes(2);
                 $this->processCommand->save();
                 return ;
             }
@@ -135,9 +135,14 @@ class CheckScheduleConsuladoCommand extends Command
             $notifiedMail->save();
             $this->infoSys('Mail enviado');
             $this->processCommand->last_status = 'success';
-            $this->processCommand->next_execute = Carbon::now()->addMinutes(30);
+            $this->processCommand->next_execute = Carbon::now()->addMinutes(9);
+            $this->processCommand->save();
+        }else{
+            $this->processCommand->last_status = 'success';
+            $this->processCommand->next_execute = Carbon::now()->addMinutes(2);
             $this->processCommand->save();
         }
+
     }
 
     private function login() {
