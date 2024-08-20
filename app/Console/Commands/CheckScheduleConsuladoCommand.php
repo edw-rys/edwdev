@@ -106,6 +106,9 @@ class CheckScheduleConsuladoCommand extends Command
         $newDates = [];
         $sendMail = false;
         for ($i=0; $i < $maxLimit ; $i++) { 
+            if($i == 0){
+                Log::info("Fecha 1: ". $response[$i]->date);
+            }
             $scheduleDate = Carbon::createFromFormat('Y-m-d', $response[$i]->date);
             if($scheduleDate < $maxDateCheck){
                 $sendMail = true;
