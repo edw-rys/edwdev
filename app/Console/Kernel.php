@@ -3,8 +3,11 @@
 namespace App\Console;
 
 use App\Console\Commands\RefactorsCitiesCommand;
+use App\Models\NextTimeScheduleRun;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -25,8 +28,28 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('refactor-cities')->everySixHours();
-        // $schedule->command('inspire')->hourly();
+        // $schedule->command('refactor-cities')->everySixHours();
+        $commandName = 'check:consulado-schedules';
+        $processCommand = NextTimeScheduleRun::where('command_name', $commandName)->first();
+        if($processCommand == null){
+            $processCommand = NextTimeScheduleRun::create([
+                'command_name'  => $commandName,
+                'next_execute'  => now()
+            ]);
+        }
+        try {
+            if ($processCommand->next_execute->format('Y-m-d H:i') >= Carbon::now()->format('Y-m-d H:i')) {
+                $schedule->command($commandName)->everyMinute();
+                Log::info('Proceso finalizado '. now());
+                if($processCommand->next_execute->format('Y-m-d H:i') == NextTimeScheduleRun::where('command_name', $commandName)->first()->next_execute){
+                    $processCommand->next_execute = Carbon::now()->addMinute(20);
+                }
+                $processCommand->last_execute = now();
+                $processCommand->save();
+            }
+        } catch (\Throwable $th) {
+            Log::info('Error en Kernel.php: '. $th->getMessage());
+        }
     }
 
     /**

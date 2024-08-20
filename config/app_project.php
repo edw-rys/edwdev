@@ -131,4 +131,14 @@ return [
             'color'         => '#F97B8B',
         ],
     ],
+    'ms'    => [
+        'consulado'     => [
+            'consultaHorario'   => env('CONSULADO_URL_CONSULTA_HORARIO'),
+            'login'             => env('CONSULADO_URL_LOGIN'),
+            'username'          => env('CONSULADO_URL_LOGIN_USER'),
+            'password'          => env('CONSULADO_URL_LOGIN_PASS'),
+            'maxDate'           => env('CONSULADO_MAX_DATE'),
+            'emails'            => env('CONSULADO_MAILS'),
+        ]
+    ]
 ];
