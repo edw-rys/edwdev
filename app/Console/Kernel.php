@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
                 $schedule->command($commandName)->everyMinute();
                 Log::info('Proceso finalizado '. now());
                 if($processCommand->next_execute->format('Y-m-d H:i') == NextTimeScheduleRun::where('command_name', $commandName)->first()->next_execute){
-                    $processCommand->next_execute = Carbon::now()->addMinute(20);
+                    $processCommand->next_execute = Carbon::now()->addMinute(4);
                 }
                 $processCommand->last_execute = now();
                 $processCommand->save();
