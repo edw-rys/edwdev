@@ -38,7 +38,7 @@ class Kernel extends ConsoleKernel
             ]);
         }
         try {
-            if ($processCommand->next_execute->format('Y-m-d H:i') >= Carbon::now()->format('Y-m-d H:i')) {
+            if ($processCommand->next_execute->format('Y-m-d H:i') <= Carbon::now()->format('Y-m-d H:i')) {
                 $schedule->command($commandName)->everyMinute();
                 Log::info('Proceso finalizado '. now());
                 if($processCommand->next_execute->format('Y-m-d H:i') == NextTimeScheduleRun::where('command_name', $commandName)->first()->next_execute){

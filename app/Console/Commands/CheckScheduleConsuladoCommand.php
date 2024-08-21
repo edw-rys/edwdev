@@ -57,7 +57,14 @@ class CheckScheduleConsuladoCommand extends Command
                 'next_execute'  => now()
             ]);
         }
-        $this->startProcess();
+
+        try {
+            if ($this->processCommand->next_execute->format('Y-m-d H:i') <= Carbon::now()->format('Y-m-d H:i')) {
+                $this->startProcess();
+            }
+        } catch (\Throwable $th) {
+            Log::info('Error en Kernel.php: '. $th->getMessage());
+        }
     }
 
     private function startProcess($attempt = 0) {
@@ -205,7 +212,7 @@ class CheckScheduleConsuladoCommand extends Command
     }
 
     private function infoSys($message) {
-        $this->info($message);
+        //$this->info($message);
         Log::info($message);
     }
 }
