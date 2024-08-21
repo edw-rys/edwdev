@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Exceptions\GenericException;
 use App\Mail\ConsuladoScheduleMail;
 use App\Models\ConsuladoMailsNotificados;
 use App\Models\ConsuladoRegisters;
@@ -104,7 +105,12 @@ class CheckScheduleConsuladoCommand extends Command
             $response = $this->login();
             $response = $this->searchSchedules($register->cookie_full);
         }
-        $maxLimit = count($response) ;
+        try {
+            $maxLimit = count($response) ;
+        } catch (\Throwable $th) {
+            Log::info($th->getMessage(), ['res' => $response]);
+            throw new GenericException($th->getMessage());
+        }
         if($maxLimit >10){
             $maxLimit = 10;
         }

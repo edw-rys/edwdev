@@ -29,7 +29,7 @@ class ConsuladoScheduleMail extends Mailable
     public function build()
     {
         return $this->markdown('emails.consulado-notify')
-            ->subject($this->subject)
+            ->subject("Nuevos turnos en la web del consulado detectados!!")
             ->with('detail', $this->detail)
             ;
     }
