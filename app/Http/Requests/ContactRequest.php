@@ -29,7 +29,7 @@ class ContactRequest extends FormRequest
             'email'     => ['required','string', 'email'],
             'subject'   => ['required','string'],
             'message'   => ['required','string'],
-            'g-recaptcha-response' => ['required', function ($attribute, $value, $fail) {
+            'recaptcha_token' => ['required', function ($attribute, $value, $fail) {
                 $this->validateRecaptcha($value, $fail);
             }],
         ];
@@ -85,7 +85,7 @@ class ContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'g-recaptcha-response.required' => 'Por favor, complete la verificación reCAPTCHA.',
+            'recaptcha_token.required' => 'Por favor, complete la verificación reCAPTCHA.',
         ];
     }
 
@@ -101,7 +101,7 @@ class ContactRequest extends FormRequest
             'email' => 'correo electrónico',
             'subject' => 'asunto',
             'message' => 'mensaje',
-            'g-recaptcha-response' => 'verificación reCAPTCHA',
+            'recaptcha_token' => 'verificación reCAPTCHA',
         ];
     }
 }

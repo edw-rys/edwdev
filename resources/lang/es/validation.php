@@ -130,7 +130,7 @@ return [
     */
 
     'custom' => [
-        'g-recaptcha-response' => [
+        'recaptcha_token' => [
             'required' => 'Por favor, complete la verificación reCAPTCHA.',
         ],
     ],
@@ -151,7 +151,7 @@ return [
         'email' => 'correo electrónico',
         'subject' => 'asunto',
         'message' => 'mensaje',
-        'g-recaptcha-response' => 'verificación reCAPTCHA',
+        'recaptcha_token' => 'verificación reCAPTCHA',
     ],
 
 ];
