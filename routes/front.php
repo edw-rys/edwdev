@@ -24,8 +24,8 @@ Route::get('work/{system_name}', 'Front\FrontController@showWork')->name('front.
 
 Route::get('set-visit-api/{id}', 'Front\FrontController@setVisitPage')->name('front.set-visitit-api');
 
-Route::get('my-headers', function (Request $request) {
+/*Route::get('my-headers', function (Request $request) {
     if($request->input('ooo')=='mys'){
         dd($request->headers->all(), getClientIp(), $_SERVER['REMOTE_HOST']??'no',getenv("HTTP_X_FORWARDED_FOR"),gethostname()) ;
     }
-});
+});*/

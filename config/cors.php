@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*'],
+    'paths' => ['api/*', 'contact/*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://edw-dev.com','https://test-preview.edw-dev.com','https://preview.edw-dev.com'],
 
     'allowed_origins_patterns' => [],
 
